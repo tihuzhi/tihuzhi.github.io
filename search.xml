@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>Markdown语法(1)</title>
+      <title>Markdown语法-1</title>
       <link href="/2023/03/08/Markdown%E8%AF%AD%E6%B3%95(1)/"/>
       <url>/2023/03/08/Markdown%E8%AF%AD%E6%B3%95(1)/</url>
       
-        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>​<code># 一级标题</code></p><p>​<code>## 二级标题</code></p><p>​<code>### 三级标题</code></p><p>​<code>#### 四级标题</code></p><p>​<code>##### 五级标题</code></p><p>​<code>###### 六级标题</code></p><p>效果如下</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><blockquote><p>注意：</p><ul><li>最后一个<code>#</code>​ 字符与标题中间留一个空格</li><li>标题应该置于行首，如果放入表格中可能无法正确解析</li></ul></blockquote><p>‍</p><h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>​<code>*这是斜体*</code>​ : <em>这是斜体</em></p><p>​<code>_这是斜体_</code>​ : <em>这是斜体</em></p><p>​<code>**这是粗体**</code>​ : <strong>这是粗体</strong></p><p>​<code>__这是粗体__</code>​ : <strong>这是粗体</strong></p><p>​<code>***这是粗斜体***</code>​ : <strong><em>这是粗斜体</em></strong></p><p>​<code>___这是粗斜体___</code>​ : <strong><em>这是粗斜体</em></strong></p><blockquote><p>快捷键：<br>加粗 Ctrl+B<br>斜体 Ctrl+I</p></blockquote><p>‍</p><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>Markdown 换行的方式有很多种:</p><ul><li>直接在一句话后敲两个空格</li><li>两句话之间加一个空行</li><li>如果你在编辑的时候，想让一行文字在显示的时候换行，就在中间加<code>&lt;br/&gt;</code>​</li></ul><p>‍</p><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>Markdown 中引用通过符号 <code>&gt;</code>​ 来实现。<code>&gt;</code>​ 符号后的空格，可有可无。<br>在引用的区块内，允许换行存在，换行并不会终止引用的区块。如果要结束引用，需要一行空白行，来结束引用的区块。<br>代码一：<code>&gt;这是一个引用</code>​</p><p>效果一：</p><blockquote><p>这是一个引用</p></blockquote><p>代码二：</p><p>​<code>&gt;这是一个引用</code>​</p><p>​<code>&gt;&gt;这是一个引用的引用</code>​</p><p>​<code>&gt;&gt;&gt;这是一个引用的引用的引用</code>​</p><p>效果二：</p><blockquote><p>这是一个引用：</p><blockquote><p>这是一个引用的引用</p><blockquote><p>这是一个引用的引用的引用</p></blockquote></blockquote></blockquote><p>‍</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>Markdown 中插入链接的使用方式是：</p><p>代码：</p><p>​<code>链接名称&lt;链接地址&gt; 即是：[这是是我的主页] (https://tihuzhi.github.io/)</code>​</p><p>​<code>或者&lt;https://tihuzhi.github.io/&gt;</code>​</p><p>效果：</p><p><a href="https://tihuzhi.github.io/">我的博客</a>​</p><p><a href="https://tihuzhi.github.io/">https://tihuzhi.github.io/</a></p><p>‍</p><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>Markdown 中插入图片的使用方式是：<br>代码：</p><p>​<code>![图片描述](图片地址，本地链接会URL链接)</code>​<br>比如这张的图片：</p><p>​<code>![原石](https://i.328888.xyz/2023/03/08/SlMOJ.th.png)</code>​</p><p>效果：</p><p>​<img src="https://i.328888.xyz/2023/03/08/SlMOJ.th.png" alt="原石">​</p><blockquote><p>经常 Ctrl+v 粘贴图片更为便捷</p></blockquote><p>‍</p><p>‍</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="标题用法"><a href="#标题用法" class="headerlink" title="标题用法"></a>标题用法</h1><p><code># 一级标题</code></p><p><code>## 二级标题</code></p><p><code>### 三级标题</code></p><p><code>#### 四级标题</code></p><p><code>##### 五级标题</code></p><p><code>###### 六级标题</code></p><p>效果如下</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><blockquote><p>注意：</p><ul><li>最后一个<code>#</code>​ 字符与标题中间留一个空格</li><li>标题应该置于行首，如果放入表格中可能无法正确解析</li></ul></blockquote><h1 id="字体用法"><a href="#字体用法" class="headerlink" title="字体用法"></a>字体用法</h1><p><code>*这是斜体*</code>​ : <em>这是斜体</em></p><p><code>_这是斜体_</code>​ : <em>这是斜体</em></p><p><code>**这是粗体**</code>​ : <strong>这是粗体</strong></p><p><code>__这是粗体__</code>​ : <strong>这是粗体</strong></p><p><code>***这是粗斜体***</code>​ : <strong><em>这是粗斜体</em></strong></p><p><code>___这是粗斜体___</code>​ : <strong><em>这是粗斜体</em></strong></p><blockquote><p>快捷键：<br>加粗 Ctrl+B<br>斜体 Ctrl+I</p></blockquote><h1 id="换行用法"><a href="#换行用法" class="headerlink" title="换行用法"></a>换行用法</h1><p>Markdown 换行的方式有很多种:</p><ul><li>直接在一句话后敲两个空格</li><li>两句话之间加一个空行</li><li>如果你在编辑的时候，想让一行文字在显示的时候换行，就在中间加<code>&lt;br/&gt;</code>​</li><li>代码：<br><code>这是一&lt;br&gt;段话</code><br>演示：</li></ul><p>这是<br>一段话<br>‍</p><h1 id="引用用法"><a href="#引用用法" class="headerlink" title="引用用法"></a>引用用法</h1><p>Markdown 中引用通过符号 <code>&gt;</code>​ 来实现。<code>&gt;</code>​ 符号后的空格，可有可无。<br>在引用的区块内，允许换行存在，换行并不会终止引用的区块。如果要结束引用，需要一行空白行，来结束引用的区块。<br>代码一：<code>&gt;这是一个引用</code>​</p><p>效果一：</p><blockquote><p>这是一个引用</p></blockquote><p>代码二：</p><p><code>&gt;这是一个引用</code>​</p><p><code>&gt;&gt;这是一个引用的引用</code>​</p><p><code>&gt;&gt;&gt;这是一个引用的引用的引用</code>​</p><p>效果二：</p><blockquote><p>这是一个引用：</p><blockquote><p>这是一个引用的引用</p><blockquote><p>这是一个引用的引用的引用</p></blockquote></blockquote></blockquote><p>‍</p><h1 id="链接用法"><a href="#链接用法" class="headerlink" title="链接用法"></a>链接用法</h1><p>Markdown 中插入链接的使用方式是：</p><p>代码：</p><p><code>链接名称&lt;链接地址&gt; 即是：[这是是我的主页] (https://www.zhenliriji.tech/)</code></p><p><code>或者&lt;https://www.zhenliriji.tech/&gt;</code></p><p>效果：</p><p><a href="https://www.zhenliriji.tech/">我的博客</a></p><p><a href="https://www.zhenliriji.tech/">https://www.zhenliriji.tech/</a></p><p>‍</p><h1 id="图片用法"><a href="#图片用法" class="headerlink" title="图片用法"></a>图片用法</h1><p>Markdown 中插入图片的使用方式是：<br>代码：</p><p><code>![图片描述](图片地址，本地链接会URL链接)</code>​<br>比如这张的图片：</p><p><code>![原石](https://i.328888.xyz/2023/03/08/SlMOJ.th.png)</code>​</p><p>效果：</p><p><img src="https://i.328888.xyz/2023/03/08/SlMOJ.th.png" alt="原石">​</p><blockquote><p>经常 Ctrl+v 粘贴图片更为便捷<br>如果要上传博客，建议使用图床链接</p></blockquote>]]></content>
       
       
       
@@ -42,9 +42,9 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -67,6 +67,17 @@
       <title>电影</title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
