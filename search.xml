@@ -57,6 +57,17 @@
     
     
     <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>分类</title>
       <link href="/categories/123.html"/>
       <url>/categories/123.html</url>
@@ -91,30 +102,8 @@
     
     <entry>
       <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/categories/tech.html"/>
       <url>/categories/tech.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -128,6 +117,17 @@
       <url>/help/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}]]></content>
       
     </entry>
     
@@ -156,9 +156,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -167,9 +167,9 @@
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
