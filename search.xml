@@ -8,7 +8,7 @@
       <link href="/2023/06/07/%E7%AC%AC%E4%B8%89%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2023/06/07/%E7%AC%AC%E4%B8%89%E7%AF%87%E6%96%87%E7%AB%A0/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
       
       
@@ -21,7 +21,7 @@
       <link href="/2023/06/07/%E7%AC%AC%E4%BA%8C%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2023/06/07/%E7%AC%AC%E4%BA%8C%E7%AF%87%E6%96%87%E7%AB%A0/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
       
       
@@ -34,7 +34,7 @@
       <link href="/2023/03/08/Markdown/"/>
       <url>/2023/03/08/Markdown/</url>
       
-        <content type="html"><![CDATA[<h1 id="标题用法"><a href="#标题用法" class="headerlink" title="标题用法"></a>标题用法</h1><p><code># 一级标题</code></p><p><code>## 二级标题</code></p><p><code>### 三级标题</code></p><p><code>#### 四级标题</code></p><p><code>##### 五级标题</code></p><p><code>###### 六级标题</code></p><p>效果如下</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><blockquote><p>注意：</p><ul><li>最后一个<code>#</code>​ 字符与标题中间留一个空格</li><li>标题应该置于行首，如果放入表格中可能无法正确解析</li></ul></blockquote><h1 id="字体用法"><a href="#字体用法" class="headerlink" title="字体用法"></a>字体用法</h1><p><code>*这是斜体*</code>​ : <em>这是斜体</em></p><p><code>_这是斜体_</code>​ : <em>这是斜体</em></p><p><code>**这是粗体**</code>​ : <strong>这是粗体</strong></p><p><code>__这是粗体__</code>​ : <strong>这是粗体</strong></p><p><code>***这是粗斜体***</code>​ : <strong><em>这是粗斜体</em></strong></p><p><code>___这是粗斜体___</code>​ : <strong><em>这是粗斜体</em></strong></p><blockquote><p>快捷键：<br>加粗 Ctrl+B<br>斜体 Ctrl+I</p></blockquote><h1 id="换行用法"><a href="#换行用法" class="headerlink" title="换行用法"></a>换行用法</h1><p>Markdown 换行的方式有很多种:</p><ul><li>直接在一句话后敲两个空格</li><li>两句话之间加一个空行</li><li>如果你在编辑的时候，想让一行文字在显示的时候换行，就在中间加<code>&lt;br/&gt;</code>​</li><li>代码：<br><code>这是一&lt;br&gt;段话</code><br>演示：</li></ul><p>这是<br>一段话<br>‍</p><h1 id="引用用法"><a href="#引用用法" class="headerlink" title="引用用法"></a>引用用法</h1><p>Markdown 中引用通过符号 <code>&gt;</code>​ 来实现。<code>&gt;</code>​ 符号后的空格，可有可无。<br>在引用的区块内，允许换行存在，换行并不会终止引用的区块。如果要结束引用，需要一行空白行，来结束引用的区块。<br>代码一：<code>&gt;这是一个引用</code>​</p><p>效果一：</p><blockquote><p>这是一个引用</p></blockquote><p>代码二：</p><p><code>&gt;这是一个引用</code>​</p><p><code>&gt;&gt;这是一个引用的引用</code>​</p><p><code>&gt;&gt;&gt;这是一个引用的引用的引用</code>​</p><p>效果二：</p><blockquote><p>这是一个引用：</p><blockquote><p>这是一个引用的引用</p><blockquote><p>这是一个引用的引用的引用</p></blockquote></blockquote></blockquote><p>‍</p><h1 id="链接用法"><a href="#链接用法" class="headerlink" title="链接用法"></a>链接用法</h1><p>Markdown 中插入链接的使用方式是：</p><p>代码：</p><p><code>链接名称&lt;链接地址&gt; 即是：[这是是我的主页] (https://www.zhenliriji.tech/)</code></p><p><code>或者&lt;https://www.zhenliriji.tech/&gt;</code></p><p>效果：</p><p><a href="https://www.zhenliriji.tech/">我的博客</a></p><p><a href="https://www.zhenliriji.tech/">https://www.zhenliriji.tech/</a></p><p>‍</p><h1 id="图片用法"><a href="#图片用法" class="headerlink" title="图片用法"></a>图片用法</h1><p>Markdown 中插入图片的使用方式是：<br>代码：</p><p><code>![图片描述](图片地址，本地链接会URL链接)</code>​<br>比如这张的图片：</p><p><code>![原石](https://i.328888.xyz/2023/03/08/SlMOJ.th.png)</code>​</p><p>效果：</p><p><img src="https://i.328888.xyz/2023/03/08/SlMOJ.th.png" alt="原石">​</p><blockquote><p>经常 Ctrl+v 粘贴图片更为便捷<br>如果要上传博客，建议使用图床链接</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="标题用法"><a href="#标题用法" class="headerlink" title="标题用法"></a>标题用法</h1><p><code># 一级标题</code></p><p><code>## 二级标题</code></p><p><code>### 三级标题</code></p><p><code>#### 四级标题</code></p><p><code>##### 五级标题</code></p><p><code>###### 六级标题</code></p><p>效果如下</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><blockquote><p>注意：</p><ul><li>最后一个<code>#</code>​ 字符与标题中间留一个空格</li><li>标题应该置于行首，如果放入表格中可能无法正确解析</li></ul></blockquote><h1 id="字体用法"><a href="#字体用法" class="headerlink" title="字体用法"></a>字体用法</h1><p><code>*这是斜体*</code>​ : <em>这是斜体</em></p><p><code>_这是斜体_</code>​ : <em>这是斜体</em></p><p><code>**这是粗体**</code>​ : <strong>这是粗体</strong></p><p><code>__这是粗体__</code>​ : <strong>这是粗体</strong></p><p><code>***这是粗斜体***</code>​ : <strong><em>这是粗斜体</em></strong></p><p><code>___这是粗斜体___</code>​ : <strong><em>这是粗斜体</em></strong></p><blockquote><p>快捷键：<br>加粗 Ctrl+B<br>斜体 Ctrl+I</p></blockquote><h1 id="换行用法"><a href="#换行用法" class="headerlink" title="换行用法"></a>换行用法</h1><p>Markdown 换行的方式有很多种:</p><ul><li>直接在一句话后敲两个空格</li><li>两句话之间加一个空行</li><li>如果你在编辑的时候，想让一行文字在显示的时候换行，就在中间加<code>&lt;br/&gt;</code>​</li><li>代码：<br><code>这是一&lt;br&gt;段话</code><br>演示：</li></ul><p>这是<br>一段话<br>‍</p><h1 id="引用用法"><a href="#引用用法" class="headerlink" title="引用用法"></a>引用用法</h1><p>Markdown 中引用通过符号 <code>&gt;</code>​ 来实现。<code>&gt;</code>​ 符号后的空格，可有可无。<br>在引用的区块内，允许换行存在，换行并不会终止引用的区块。如果要结束引用，需要一行空白行，来结束引用的区块。<br>代码一：<code>&gt;这是一个引用</code>​</p><p>效果一：</p><blockquote><p>这是一个引用</p></blockquote><p>代码二：</p><p><code>&gt;这是一个引用</code>​</p><p><code>&gt;&gt;这是一个引用的引用</code>​</p><p><code>&gt;&gt;&gt;这是一个引用的引用的引用</code>​</p><p>效果二：</p><blockquote><p>这是一个引用：</p><blockquote><p>这是一个引用的引用</p><blockquote><p>这是一个引用的引用的引用</p></blockquote></blockquote></blockquote><p>‍</p><h1 id="链接用法"><a href="#链接用法" class="headerlink" title="链接用法"></a>链接用法</h1><p>Markdown 中插入链接的使用方式是：</p><p>代码：</p><p><code>链接名称&lt;链接地址&gt; 即是：[这是是我的主页] (https://www.zhenliriji.tech/)</code></p><p><code>或者&lt;https://www.zhenliriji.tech/&gt;</code></p><p>效果：</p><p><a href="https://www.zhenliriji.tech/">我的博客</a></p><p><a href="https://www.zhenliriji.tech/">https://www.zhenliriji.tech/</a></p><p>‍</p><h1 id="图片用法"><a href="#图片用法" class="headerlink" title="图片用法"></a>图片用法</h1><p>Markdown 中插入图片的使用方式是：<br>代码：</p><p><code>![图片描述](图片地址，本地链接会URL链接)</code>​<br>比如这张的图片：</p><p><code>![原石](https://i.328888.xyz/2023/03/08/SlMOJ.th.png)</code>​</p><p>效果：</p><p><img src="https://i.328888.xyz/2023/03/08/SlMOJ.th.png" alt="原石">​</p><blockquote><p>经常 Ctrl+v 粘贴图片更为便捷<br>如果要上传博客，建议使用图床链接</p></blockquote>]]></content>
       
       
       
@@ -43,6 +43,17 @@
     
   
   
+    
+    
+    <entry>
+      <title>照片</title>
+      <link href="/Gallery/index.html"/>
+      <url>/Gallery/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
     
     
     <entry>
@@ -50,51 +61,7 @@
       <link href="/categories/123.html"/>
       <url>/categories/123.html</url>
       
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/categories/tech.html"/>
-      <url>/categories/tech.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/categories/huma.html"/>
-      <url>/categories/huma.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
@@ -105,7 +72,18 @@
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
@@ -113,54 +91,32 @@
     
     <entry>
       <title></title>
-      <link href="/js/runtime.js"/>
-      <url>/js/runtime.js</url>
+      <link href="/categories/huma.html"/>
+      <url>/categories/huma.html</url>
       
-        <content type="html"><![CDATA[var now = new Date();function createtime() {  now.setTime(now.getTime() + 1e3);  var e = new Date("03/08/2023 00:00:00"),    t = Math.trunc(234e8 + ((now - e) / 1e3) * 17),    a = (t / 1496e5).toFixed(6),    o = new Date("03/08/2023 00:00:00"),    n = (now - o) / 1e3 / 60 / 60 / 24,    r = Math.floor(n),    i = (now - o) / 1e3 / 60 / 60 - 24 * r,    s = Math.floor(i);  1 == String(s).length && (s = "0" + s);  var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s,    l = Math.floor(d);  1 == String(l).length && (l = "0" + l);  var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l,    b = Math.round(g);  1 == String(b).length && (b = "0" + b);  let c = "";  (c =    s < 18 && s >= 9      ? `<img class='' src='' title=''><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀 <br> 我找遍了天空，没有发现上帝和天使——尤里 · 加加林 </div>`      : `<img class='' src='' title=''><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀 <br> 我找遍了天空，没有发现上帝和天使——尤里 · 加加林 </div>`),    document.getElementById("workboard") &&      (document.getElementById("workboard").innerHTML = c);}setInterval(() => {  createtime();}, 1e3);]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title></title>
+      <link href="/categories/tech.html"/>
+      <url>/categories/tech.html</url>
       
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}]]></content>
       
     </entry>
     
@@ -171,18 +127,62 @@
       <link href="/help/index.html"/>
       <url>/help/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>照片</title>
-      <link href="/Gallery/index.html"/>
-      <url>/Gallery/index.html</url>
+      <title></title>
+      <link href="/js/runtime.js"/>
+      <url>/js/runtime.js</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>var now = new Date();function createtime() {  now.setTime(now.getTime() + 1e3);  var e = new Date("03/08/2023 00:00:00"),    t = Math.trunc(234e8 + ((now - e) / 1e3) * 17),    a = (t / 1496e5).toFixed(6),    o = new Date("03/08/2023 00:00:00"),    n = (now - o) / 1e3 / 60 / 60 / 24,    r = Math.floor(n),    i = (now - o) / 1e3 / 60 / 60 - 24 * r,    s = Math.floor(i);  1 == String(s).length && (s = "0" + s);  var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s,    l = Math.floor(d);  1 == String(l).length && (l = "0" + l);  var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l,    b = Math.round(g);  1 == String(b).length && (b = "0" + b);  let c = "";  (c =    s < 18 && s >= 9      ? `<img class='' src='' title=''><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀 <br> 我找遍了天空，没有发现上帝和天使——尤里 · 加加林 </div>`      : `<img class='' src='' title=''><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀 <br> 我找遍了天空，没有发现上帝和天使——尤里 · 加加林 </div>`),    document.getElementById("workboard") &&      (document.getElementById("workboard").innerHTML = c);}setInterval(() => {  createtime();}, 1e3);]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
