@@ -1,0 +1,365 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲 | 冷水煮土豆</title><meta name="author" content="寒彻"><meta name="copyright" content="寒彻"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="把网关设置调整后就好了，差点急死我喵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲">
+<meta property="og:url" content="https://bolg.wuuyuri.ink/posts/bebd6637">
+<meta property="og:site_name" content="冷水煮土豆">
+<meta property="og:description" content="把网关设置调整后就好了，差点急死我喵">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgbed.wuuyuri.ink//img/img_cover_5.jpg">
+<meta property="article:published_time" content="2025-12-24T21:58:36.000Z">
+<meta property="article:modified_time" content="2025-12-24T22:01:21.592Z">
+<meta property="article:author" content="寒彻">
+<meta property="article:tag" content="frp">
+<meta property="article:tag" content="iStroeOS">
+<meta property="article:tag" content="软路由">
+<meta property="article:tag" content="旁路由">
+<meta property="article:tag" content="OpenWrt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed.wuuyuri.ink//img/img_cover_5.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲",
+  "url": "https://bolg.wuuyuri.ink/posts/bebd6637",
+  "image": "https://imgbed.wuuyuri.ink//img/img_cover_5.jpg",
+  "datePublished": "2025-12-24T21:58:36.000Z",
+  "dateModified": "2025-12-24T22:01:21.592Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "寒彻",
+      "url": "https://bolg.wuuyuri.ink"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/potato.png"><link rel="canonical" href="https://bolg.wuuyuri.ink/posts/bebd6637"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: 寒彻","link":"链接: ","source":"来源: 冷水煮土豆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://imgbed.wuuyuri.ink/wallpaper/wallhaven-rq75r7.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-file-text"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fa-solid fa-user"></i><span> 个人</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/artitalk"><i class="fa-fw fas fa-lightbulb"></i><span> 说说</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fa-brands fa-bilibili"></i><span> 追番</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://imgbed.wuuyuri.ink//img/img_cover_5.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/potato.png" alt="Logo"><span class="site-name">冷水煮土豆</span></a><a class="nav-page-title" href="/"><span class="site-name">frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-file-text"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fa-solid fa-user"></i><span> 个人</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/artitalk"><i class="fa-fw fas fa-lightbulb"></i><span> 说说</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fa-brands fa-bilibili"></i><span> 追番</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-24T21:58:36.000Z" title="发表于 2025-12-25 05:58:36">2025-12-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-24T22:01:21.592Z" title="更新于 2025-12-25 06:01:21">2025-12-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="故障排查实录：旁路由模式下内网服务无法穿透的“非对称路由”之困"><a href="#故障排查实录：旁路由模式下内网服务无法穿透的“非对称路由”之困" class="headerlink" title="故障排查实录：旁路由模式下内网服务无法穿透的“非对称路由”之困"></a>故障排查实录：旁路由模式下内网服务无法穿透的“非对称路由”之困</h1><blockquote>
+<p>一次典型的网络故障排查，最终定位到由Windows网关错误指向旁路由导致的非对称路由问题。</p>
+</blockquote>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在家庭网络环境中，我搭建了以下服务架构：</p>
+<ol>
+<li><strong>公网服务器</strong>：阿里云ECS，运行FRP服务端（frps）</li>
+<li><strong>内网旁路由</strong>：iStoreOS系统（基于OpenWrt），运行FRP客户端（frpc），作为网络旁路设备</li>
+<li><strong>目标服务</strong>：本地Windows电脑上的Minecraft Java版服务器（端口25564）</li>
+</ol>
+<p><strong>预期目标</strong>：通过公网FRP服务穿透内网Minecraft服务器。</p>
+<p><strong>故障现象</strong>：通过旁路由的FRP隧道无法连接Minecraft服务器，但将frpc直接安装在Windows电脑上则可以正常穿透。</p>
+<h2 id="网络环境拓扑"><a href="#网络环境拓扑" class="headerlink" title="网络环境拓扑"></a>网络环境拓扑</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网客户端 -&gt; 阿里云frps(11451端口) -&gt; 家庭网络 -&gt; iStoreOS旁路由(192.168.5.2) -&gt; Windows MC服务器(192.168.5.4:25564)</span><br></pre></td></tr></table></figure>
+<h2 id="逐步排查过程"><a href="#逐步排查过程" class="headerlink" title="逐步排查过程"></a>逐步排查过程</h2><h3 id="第一阶段：基础配置检查"><a href="#第一阶段：基础配置检查" class="headerlink" title="第一阶段：基础配置检查"></a>第一阶段：基础配置检查</h3><ol>
+<li><p><strong>确认FRP配置正确性</strong></p>
+<ul>
+<li>隧道类型：TCP</li>
+<li>本地IP：正确设置为Windows内网IP（192.168.5.4）</li>
+<li>本地端口：25564（与Minecraft服务器配置一致）</li>
+<li>远程端口：11451（已在阿里云安全组开放）</li>
+</ul>
+</li>
+<li><p><strong>验证旁路由FRP运行状态</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查frpc进程</span></span><br><span class="line">ps | grep frpc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确认隧道注册成功</span></span><br><span class="line">logread | grep frp.Mechanomania</span><br><span class="line"><span class="comment"># 显示：[frp.Mechanomania] start proxy success</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="第二阶段：网络连通性测试"><a href="#第二阶段：网络连通性测试" class="headerlink" title="第二阶段：网络连通性测试"></a>第二阶段：网络连通性测试</h3><ol>
+<li><p><strong>关键发现</strong>：从旁路由直接测试到Windows端口的连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用简化版nc测试</span></span><br><span class="line">nc 192.168.5.4 25564</span><br><span class="line"><span class="comment"># 现象：连接建立（光标卡住），但无数据返回，最终超时</span></span><br></pre></td></tr></table></figure>
+<p>这一现象表明：<strong>TCP握手可以完成，但数据传输受阻</strong>。</p>
+</li>
+<li><p><strong>Windows端服务验证</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查服务监听状态</span></span><br><span class="line">netstat <span class="literal">-an</span> | findstr :<span class="number">25564</span></span><br><span class="line"><span class="comment"># 输出显示正确监听：0.0.0.0:25564</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地回环测试正常</span></span><br><span class="line"><span class="built_in">Test-NetConnection</span> <span class="literal">-ComputerName</span> <span class="number">127.0</span>.<span class="number">0.1</span> <span class="literal">-Port</span> <span class="number">25564</span></span><br><span class="line"><span class="comment"># TcpTestSucceeded : True</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="第三阶段：深入网络配置检查"><a href="#第三阶段：深入网络配置检查" class="headerlink" title="第三阶段：深入网络配置检查"></a>第三阶段：深入网络配置检查</h3><ol>
+<li><p><strong>排查防火墙与网络隔离</strong></p>
+<ul>
+<li>已确认Windows防火墙完全关闭</li>
+<li>检查路由器无“客户端隔离”设置</li>
+</ul>
+</li>
+<li><p><strong>关键突破：发现异常网关配置</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows网络配置检查</span></span><br><span class="line">ipconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关键输出：</span></span><br><span class="line"><span class="comment"># 以太网适配器 以太网 3:</span></span><br><span class="line"><span class="comment"># IPv4 地址 . . . . . . . . . . . . : 192.168.5.4</span></span><br><span class="line"><span class="comment"># 子网掩码  . . . . . . . . . . . . : 255.255.255.0</span></span><br><span class="line"><span class="comment"># 默认网关. . . . . . . . . . . . . : 192.168.5.2  &lt;-- 问题所在！</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="第四阶段：问题根源分析"><a href="#第四阶段：问题根源分析" class="headerlink" title="第四阶段：问题根源分析"></a>第四阶段：问题根源分析</h3><p><strong>根本原因：非对称路由问题</strong></p>
+<ol>
+<li><p><strong>连接建立</strong>：iStoreOS(192.168.5.2)向Windows(192.168..5.4)发起连接，SYN包直接送达。</p>
+</li>
+<li><p><strong>响应异常</strong>：Windows收到SYN后，需要发送SYN-ACK响应。但由于其网关设置为192.168.5.2，它<strong>将本应直接回复给192.168.5.2的响应包，又发往了网关192.168.5.2本身</strong>。</p>
+</li>
+<li><p><strong>数据包迷失</strong>：iStoreOS收到一个”发给自己但不是自己发起”的TCP握手响应，不知如何处理而丢弃，导致连接卡在握手后的阶段，无法传输实际数据。</p>
+</li>
+</ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="临时验证方案"><a href="#临时验证方案" class="headerlink" title="临时验证方案"></a>临时验证方案</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以管理员身份运行PowerShell</span></span><br><span class="line"><span class="comment"># 删除错误网关</span></span><br><span class="line">route delete <span class="number">0.0</span>.<span class="number">0.0</span> mask <span class="number">0.0</span>.<span class="number">0.0</span> <span class="number">192.168</span>.<span class="number">5.2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加正确网关（假设主路由器为192.168.5.1）</span></span><br><span class="line">route add <span class="number">0.0</span>.<span class="number">0.0</span> mask <span class="number">0.0</span>.<span class="number">0.0</span> <span class="number">192.168</span>.<span class="number">5.1</span></span><br></pre></td></tr></table></figure>
+<h3 id="永久修复方案"><a href="#永久修复方案" class="headerlink" title="永久修复方案"></a>永久修复方案</h3><ol>
+<li><strong>控制面板</strong> → <strong>网络和共享中心</strong> → <strong>更改适配器设置</strong></li>
+<li>右键当前网络连接 → <strong>属性</strong> → <strong>Internet协议版本4(TCP/IPv4)</strong></li>
+<li><p>根据当前设置选择：</p>
+<ul>
+<li><strong>自动获取IP地址</strong>：点击”高级”，在”网关”栏中删除192.168.5.2，添加主路由器地址</li>
+<li><strong>手动设置IP地址</strong>：直接修改”默认网关”为主路由器地址（如192.168.5.1）</li>
+</ul>
+</li>
+<li><p><strong>验证旁路由自身网关设置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在iStoreOS上检查</span></span><br><span class="line">ip route show default</span><br><span class="line"><span class="comment"># 应显示：default via 192.168.5.1 dev ...</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="技术要点总结"><a href="#技术要点总结" class="headerlink" title="技术要点总结"></a>技术要点总结</h2><ol>
+<li><strong>旁路由架构</strong>中，终端设备的默认网关应指向主路由器，而非旁路由设备本身。</li>
+<li><strong>网络排查方法论</strong>：<ul>
+<li>遵循”从底向上”原则：物理连接 → 网络层 → 传输层 → 应用层</li>
+<li>善用基础工具：<code>nc</code>/<code>telnet</code>测试连通性，<code>netstat</code>检查服务状态，<code>ipconfig</code>验证网络配置</li>
+<li>关注异常现象：能建立连接但无数据传输，往往指向路由或防火墙问题</li>
+</ul>
+</li>
+<li><strong>FRP故障排查要点</strong>：<ul>
+<li>先确认frpc隧道成功建立</li>
+<li>在frpc侧测试到local_ip:local_port的连通性</li>
+<li>关注frpc日志中的具体错误信息</li>
+</ul>
+</li>
+</ol>
+<h2 id="经验教训"><a href="#经验教训" class="headerlink" title="经验教训"></a>经验教训</h2><ol>
+<li><strong>网关配置是旁路由部署中最常见的错误点</strong>，配置后务必检查所有设备的网关设置。</li>
+<li><strong>网络故障现象与根本原因可能相距甚远</strong>，本次表现为FRP穿透失败，根本原因却是Windows网络配置错误。</li>
+<li><strong>系统性的排查方法比盲目尝试更有效</strong>，建立清晰的排查路径能极大提高问题解决效率。</li>
+</ol>
+<hr>
+<p><strong>修正后拓扑</strong>：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网客户端 -&gt; 阿里云frps -&gt; iStoreOS旁路由 -&gt; Windows MC服务器(网关正确指向主路由器)</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果</strong>：网关修正后，FRP隧道立即恢复正常，可通过公网成功访问内网Minecraft服务器。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://bolg.wuuyuri.ink">寒彻</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://bolg.wuuyuri.ink/posts/bebd6637">https://bolg.wuuyuri.ink/posts/bebd6637</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://bolg.wuuyuri.ink" target="_blank">冷水煮土豆</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frp/">frp</a><a class="post-meta__tags" href="/tags/iStroeOS/">iStroeOS</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/">软路由</a><a class="post-meta__tags" href="/tags/%E6%97%81%E8%B7%AF%E7%94%B1/">旁路由</a><a class="post-meta__tags" href="/tags/OpenWrt/">OpenWrt</a></div><div class="post-share"><div class="social-share" data-image="https://imgbed.wuuyuri.ink//img/img_cover_5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/316439a2" title="高中3500词"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink/img/p6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">高中3500词</div></div><div class="info-2"><div class="info-item-1">这是我从网上找到的高中单词3500词，不知道全不全</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">寒彻</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://https://github.com/tihuzhi/tihuzhi.github.io"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/tihuzhi" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:tihuzhisamawa@qq.com" target="_blank" title="邮箱"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">拜科努尔飞船正在上升，尾焰正在融化国境线</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E5%AE%9E%E5%BD%95%EF%BC%9A%E6%97%81%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%97%A0%E6%B3%95%E7%A9%BF%E9%80%8F%E7%9A%84%E2%80%9C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E8%B7%AF%E7%94%B1%E2%80%9D%E4%B9%8B%E5%9B%B0"><span class="toc-number">1.</span> <span class="toc-text">故障排查实录：旁路由模式下内网服务无法穿透的“非对称路由”之困</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">问题背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E6%8B%93%E6%89%91"><span class="toc-number">1.2.</span> <span class="toc-text">网络环境拓扑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%90%E6%AD%A5%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">逐步排查过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%A3%80%E6%9F%A5"><span class="toc-number">1.3.1.</span> <span class="toc-text">第一阶段：基础配置检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">第二阶段：网络连通性测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%B7%B1%E5%85%A5%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%A3%80%E6%9F%A5"><span class="toc-number">1.3.3.</span> <span class="toc-text">第三阶段：深入网络配置检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%97%AE%E9%A2%98%E6%A0%B9%E6%BA%90%E5%88%86%E6%9E%90"><span class="toc-number">1.3.4.</span> <span class="toc-text">第四阶段：问题根源分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.4.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E9%AA%8C%E8%AF%81%E6%96%B9%E6%A1%88"><span class="toc-number">1.4.1.</span> <span class="toc-text">临时验证方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B8%E4%B9%85%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="toc-number">1.4.2.</span> <span class="toc-text">永久修复方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%A6%81%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">技术要点总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD"><span class="toc-number">1.6.</span> <span class="toc-text">经验教训</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/bebd6637" title="frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲"/></a><div class="content"><a class="title" href="/posts/bebd6637" title="frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲">frp和iStoreOS搭配时对于Minecraft服务器转发的小插曲</a><time datetime="2025-12-24T21:58:36.000Z" title="发表于 2025-12-25 05:58:36">2025-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/316439a2" title="高中3500词"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink/img/p6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高中3500词"/></a><div class="content"><a class="title" href="/posts/316439a2" title="高中3500词">高中3500词</a><time datetime="2025-09-30T16:58:56.000Z" title="发表于 2025-10-01 00:58:56">2025-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2d057fbc" title="置顶轮播图BUG解决方案"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="置顶轮播图BUG解决方案"/></a><div class="content"><a class="title" href="/posts/2d057fbc" title="置顶轮播图BUG解决方案">置顶轮播图BUG解决方案</a><time datetime="2025-09-28T17:54:02.000Z" title="发表于 2025-09-29 01:54:02">2025-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6dbb9de7" title="关于民粹主义的书单"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于民粹主义的书单"/></a><div class="content"><a class="title" href="/posts/6dbb9de7" title="关于民粹主义的书单">关于民粹主义的书单</a><time datetime="2025-09-08T10:48:53.000Z" title="发表于 2025-09-08 18:48:53">2025-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/83dcefb7" title="1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1"/></a><div class="content"><a class="title" href="/posts/83dcefb7" title="1">1</a><time datetime="2025-09-04T21:09:55.000Z" title="发表于 2025-09-05 05:09:55">2025-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>地球是人类的摇篮，但人类不会永远生活在摇篮里。开始他将小心翼翼地穿出大气层，然后便去征服整个太阳系。——康斯坦丁·齐奥尔科夫斯基✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/posts/eec9786.html">魔改指南</a><a href="/box/nav/">网址导航</a></li><li><a href="/social/link/">我的朋友</a><a href="/comments/">留点什么</a></li><li><a href="/personal/about/">关于作者</a><a href="/archives/">文章归档</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/box/Gallery/">我的画廊</a><a href="/artitalk/">我的说说</a></li><li><a href="/site/time/">建设进程</a><a href="/site/census/">网站统计</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a target="_blank" rel="noopener" href="https://XiaoyaoGG1024.github.io/" title="逍遥哥哥"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://XiaoyaoGG1024.github.io/assets/avatar.webp" alt=""/></a></div></div></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="//at.alicdn.com/t/c/font_5010835_rzwrd436pa.js"></script><script src="/js/artitalk_aligu.js"></script><script id="canvas_nest" defer="defer" color="0,0,0" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://bolg.wuuyuri.ink/categories/hexo/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 hexo (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://bolg.wuuyuri.ink/categories/教程/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 教程 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://bolg.wuuyuri.ink/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+    function butterfly_swiper_injector_config(){
+        var parent_div_git = document.getElementById('recent-posts');
+        // 检查是否已经挂载过
+        if (parent_div_git.querySelector('#swiper_container')) {
+            console.log('hexo-butterfly-swiper: 轮播图已存在，跳过重复挂载');
+            return;
+        }
+        var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/6dbb9de7.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_1.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-09-08</span><a class="blog-slider__title" href="posts/6dbb9de7.html" alt="">关于民粹主义的书单</a><div class="blog-slider__text">666</div><a class="blog-slider__button" href="posts/6dbb9de7.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/4a17b156.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_2.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-08-31</span><a class="blog-slider__title" href="posts/4a17b156.html" alt="">Hello World</a><div class="blog-slider__text">666</div><a class="blog-slider__button" href="posts/4a17b156.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/63841.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_5.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-04</span><a class="blog-slider__title" href="posts/63841.html" alt="">如何给自己的博客添加一个追番列表</a><div class="blog-slider__text">666</div><a class="blog-slider__button" href="posts/63841.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/18133.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink/img/1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-03-08</span><a class="blog-slider__title" href="posts/18133.html" alt="">Markdown基本语法</a><div class="blog-slider__text">666</div><a class="blog-slider__button" href="posts/18133.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/83dcefb7.html" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgbed.wuuyuri.ink//img/img_cover_4.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-09-05</span><a class="blog-slider__title" href="posts/83dcefb7.html" alt="">1</a><div class="blog-slider__text">666</div><a class="blog-slider__button" href="posts/83dcefb7.html" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+        console.log('hexo-butterfly-swiper: 挂载轮播图');
+        parent_div_git.insertAdjacentHTML("afterbegin", item_html);
+    }
+    
+    var elist = 'undefined'.split(',');
+    var cpage = location.pathname;
+    var epage = '/';
+    var flag = 0;
+
+    for (var i=0;i<elist.length;i++){
+        if (cpage.includes(elist[i])){
+            flag++;
+        }
+    }
+
+    if ((epage ==='all')&&(flag == 0)){
+        butterfly_swiper_injector_config();
+    }
+    else if (epage === cpage){
+        butterfly_swiper_injector_config();
+    }
+    </script><script defer src="/js/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.3.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v5.4.3" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
